@@ -1,7 +1,7 @@
-import {APIGatewayProxyEvent} from 'aws-lambda';
+import { APIGatewayProxyEvent } from 'aws-lambda';
 
 exports.handler = async (event: APIGatewayProxyEvent) => {
-    const {body} = event
-    console.log(body)
-    return body
-}
+  const hello = (name: string) => console.log(`Hello ${name}`);
+
+  return hello('Jordan');
+};
