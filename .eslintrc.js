@@ -1,60 +1,54 @@
-{
-  "env": {
-      "es2021": true,
-      "node": true,
-      "jest": true
-  },
-  "extends": [
-      "airbnb-base",
-      "airbnb-typescript/base",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:eslint-comments/recommended",
-      "plugin:jest/recommended",
-      "plugin:promise/recommended",
-      "prettier"
-  ],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-      "project": "./tsconfig.eslint.json"
-  },
-  "plugins": [
-      "@typescript-eslint",
-      "eslint-comments",
-      "jest",
-      "promise",
-      "import",
-      "prettier"
-  ],
-  "rules": {
-      "prettier/prettier": "error",
-      "import/prefer-default-export": "off",
-      "import/no-default-export": "error",
-      "no-use-before-define": [
-          "error",
-          {
-              "functions": false,
-              "classes": true,
-              "variables": true
-          }
-      ],
-      "@typescript-eslint/explicit-function-return-type": "off",
-      "@typescript-eslint/no-use-before-define": [
-          "error",
-          {
-              "functions": false,
-              "classes": true,
-              "variables": true,
-              "typedefs": true
-          }
-      ],
-      "import/no-extraneous-dependencies": "off"
-  },
-  "settings": {
-      "import/resolver": {
-          "typescript": {
-              "alwaysTryTypes": true,
-              "project": "./tsconfig.json"
-          }
-      }
-  }
-}
+module.exports = {
+    env:{
+        es2021: true,
+        node: true,
+        jest: true,
+    },
+    extends: [
+        'eslint:recommended',
+        'plugin:@typescript-eslint/recommended',
+        'airbnb-base',
+        'plugin:prettier/recommended',
+        'plugin:import/errors',
+        'plugin:import/warnings',
+        'plugin:import/typescript',
+],
+    parser: "@typescript-eslint/parser",
+    parserOptions: {
+        ecmaVersion: 12,
+        sourceType: "module",
+    },
+    plugins: ['@typescript-eslint', 'prettier', 'import'],
+    rules: {
+        'prettier/prettier':[
+            'error',
+            {
+                endOfLine: 'auto',
+            },
+        ],
+        'import/extensions': 'off',
+        'import/no-unresolved': 'error',
+        'no-console': 'off',
+        'import/order': [
+            'error',
+            {
+                'newlines-between': 'never',
+                groups: [
+                    ['builtin', 'external'],
+                    ['internal', 'parent', 'sibling', 'index'],
+                ],
+            },
+        ],
+    },
+    settings: {
+        'import/parsers':{
+            '@typescript-eslint/parser': ['.ts'],
+        },
+        'import/resolver': {
+            typescript:{
+                alwaysTryTypes: true,
+                project: './tsconfig.json',
+            },
+        },
+    },
+};
