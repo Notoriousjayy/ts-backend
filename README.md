@@ -1,0 +1,1 @@
+This will be base Typescript project that all applications I build use.
